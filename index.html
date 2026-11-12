@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Law Firm</title>
+<meta name="description" content="Kantor hukum">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0E2B2F;--ink2:#17393E;--brass:#B38B4D;--brassl:#D9BC8A;--paper:#F6F7F5;--white:#fff;--line:#D8DDDA;--text:#1B2427;--mute:#5A6769;--serif:'Newsreader',Georgia,serif;--sans:'Instrument Sans',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{font:400 16px/1.65 var(--sans);color:var(--text);background:var(--paper);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.12;letter-spacing:-.01em}
+h2{font-size:clamp(1.9rem,4vw,2.8rem);color:var(--ink)}
+.sec{padding:88px 0}
+.lead{color:var(--mute);max-width:60ch;margin-top:14px}
+
+/* header */
+header{position:sticky;top:0;z-index:20;background:rgba(14,43,47,.96);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{display:flex;align-items:center;gap:12px;color:#fff;font-family:var(--serif);font-size:1.18rem;font-weight:500}
+.mono{width:38px;height:38px;border:1px solid var(--brass);display:grid;place-items:center;color:var(--brassl);font-size:1rem;font-weight:600}
+nav{display:flex;align-items:center;gap:28px}
+nav a{color:#cfd9d6;font-size:.94rem;transition:color .2s}
+nav a:hover{color:#fff}
+.btn{display:inline-block;padding:12px 24px;background:var(--brass);color:#fff;font-weight:600;font-size:.95rem;border:1px solid var(--brass);cursor:pointer;font-family:inherit;transition:background .2s,color .2s}
+.btn:hover{background:transparent;color:var(--brassl)}
+.btn.o{background:transparent;color:#fff;border-color:rgba(255,255,255,.4)}
+.btn.o:hover{border-color:var(--brassl);color:var(--brassl)}
+nav .btn{padding:9px 18px}
+#mt{display:none;background:none;border:1px solid rgba(255,255,255,.3);color:#fff;padding:8px 12px;font:inherit;cursor:pointer}
+
+/* hero */
+.hero{background:var(--ink);color:#fff;position:relative;overflow:hidden;background-image:repeating-linear-gradient(90deg,transparent 0 119px,rgba(255,255,255,.045) 119px 120px)}
+.hero:after{content:"";position:absolute;inset:auto 0 0 0;height:4px;background:linear-gradient(90deg,var(--brass),transparent 70%)}
+.hg{display:grid;grid-template-columns:1.35fr .8fr;gap:56px;align-items:center;padding:96px 0 104px}
+.hero h1{font-size:clamp(2.5rem,6vw,4.7rem);font-weight:400;max-width:15ch}
+.hero h1 em{font-style:italic;color:var(--brassl)}
+.hero p.sub{color:#b9c8c5;font-size:1.1rem;max-width:52ch;margin:24px 0 36px}
+.acts{display:flex;gap:14px;flex-wrap:wrap}
+.card{background:var(--ink2);border:1px solid rgba(255,255,255,.1);border-top:3px solid var(--brass);padding:30px}
+.card h3{font-size:1.4rem;margin-bottom:6px}
+.card p{color:#b9c8c5;font-size:.94rem}
+.card ul{list-style:none;margin-top:20px;display:grid;gap:14px}
+.card li{display:flex;gap:12px;font-size:.95rem;padding-top:14px;border-top:1px solid rgba(255,255,255,.1)}
+.card li b{display:block;font-weight:500;color:#fff}
+.card li span{color:#9db0ac;font-size:.88rem}
+.rv{animation:up .9s cubic-bezier(.2,.7,.2,1) both}
+.rv.d{animation-delay:.18s}
+@keyframes up{from{opacity:0;transform:translateY(22px)}}
+
+/* stats */
+.stats{background:var(--white);border-bottom:1px solid var(--line)}
+.sg{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}
+.st{padding:34px 24px;border-left:1px solid var(--line)}
+.st:first-child{border-left:0;padding-left:0}
+.st b{display:block;font:500 clamp(2rem,4vw,2.9rem)/1 var(--serif);color:var(--ink)}
+.st span{color:var(--mute);font-size:.92rem}
+
+/* about */
+.ag{display:grid;grid-template-columns:1fr 1fr;gap:64px;margin-top:8px}
+.ag p{color:var(--mute);margin-top:18px}
+.vals{display:grid;gap:26px}
+.val{padding-left:22px;border-left:2px solid var(--brass)}
+.val h3{font-size:1.25rem;color:var(--ink);margin-bottom:4px}
+.val p{margin:0;font-size:.97rem;color:var(--mute)}
+
+/* practice */
+.pr{background:var(--white);border-block:1px solid var(--line)}
+.pg{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:44px}
+.pi{background:var(--white);padding:30px 28px;transition:background .2s}
+.pi:hover{background:var(--paper)}
+.pi h3{font-size:1.3rem;color:var(--ink);margin-bottom:8px}
+.pi p{color:var(--mute);font-size:.95rem}
+
+/* team */
+.tg{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px;margin-top:44px}
+.ph{position:relative;aspect-ratio:4/5;background:linear-gradient(160deg,var(--ink2),var(--ink));display:grid;place-items:center;overflow:hidden}
+.ph span{font:500 3.4rem var(--serif);color:var(--brassl)}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;filter:grayscale(.85);transition:filter .4s,transform .6s}
+.tm:hover .ph img{filter:none;transform:scale(1.03)}
+.tm h3{font-size:1.35rem;color:var(--ink);margin-top:18px}
+.tm .rl{color:var(--brass);font-weight:600;font-size:.92rem;margin:3px 0 10px}
+.tm ul{list-style:none;border-top:1px solid var(--line);padding-top:10px}
+.tm li{font-size:.9rem;color:var(--mute);padding:3px 0}
+
+/* contact */
+.ct{background:var(--ink);color:#fff}
+.ct h2{color:#fff}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:44px}
+.ci{list-style:none;display:grid;gap:20px}
+.ci li{padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.12)}
+.ci small{display:block;color:var(--brassl);font-size:.85rem;font-weight:600;margin-bottom:2px}
+.ci a:hover{color:var(--brassl)}
+form{display:grid;gap:12px;margin-top:28px}
+input,select,textarea{width:100%;padding:13px 14px;background:var(--ink2);border:1px solid rgba(255,255,255,.18);color:#fff;font:inherit}
+input::placeholder,textarea::placeholder{color:#8fa39f}
+select option{color:#000}
+.map{width:100%;height:100%;min-height:380px;border:0;filter:grayscale(.5) contrast(1.05)}
+.fn{margin-top:26px;font-size:.85rem;color:#9db0ac}
+
+footer{background:#091d20;color:#8fa39f;padding:30px 0;font-size:.86rem}
+footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+footer p{max-width:70ch}
+
+@media(max-width:860px){
+ .hg,.ag,.cg{grid-template-columns:1fr;gap:40px}
+ .hg{padding:64px 0 72px}.sec{padding:64px 0}
+ #mt{display:block}
+ nav{display:none;position:absolute;top:68px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--ink);padding:8px 24px 20px;border-bottom:1px solid rgba(255,255,255,.1)}
+ header.open nav{display:flex}
+ nav a{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+ nav .btn{margin-top:14px;text-align:center}
+ .st{border-left:0;padding-left:0;border-top:1px solid var(--line)}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<script>
+/* ================================================================
+   CONFIG — ubah semua data website hanya di bagian ini.
+   Foto advokat: taruh file di folder "foto/" lalu isi path-nya.
+   Jika foto kosong atau gagal dimuat, tampil inisial nama otomatis.
+   ================================================================ */
+const CONFIG = {
+  firm: {
+    name: "Prasetya & Rekan",
+    initials: "PR",
+    tagline: "Advokat dan Konsultan Hukum",
+    since: 2009,
+    heroTitle: "Pendampingan hukum yang <em>tenang</em>, teliti, dan berpihak pada hasil.",
+    heroText: "Kami mendampingi individu, keluarga, dan perusahaan menghadapi sengketa serta mengambil keputusan hukum yang tepat, dari konsultasi pertama sampai putusan.",
+    description: "Kantor hukum di Jakarta untuk litigasi, hukum korporasi, ketenagakerjaan, pertanahan, dan hukum keluarga."
+  },
+  colors: { ink: "#0E2B2F", brass: "#B38B4D" },
+  stats: [
+    { value: "15+", label: "Tahun berpraktik" },
+    { value: "1.200+", label: "Perkara ditangani" },
+    { value: "8", label: "Bidang praktik" },
+    { value: "4", label: "Advokat aktif" }
+  ],
+  about: [
+    "Didirikan pada 2009, Prasetya & Rekan membangun reputasi dari satu kebiasaan sederhana: menjelaskan posisi hukum klien secara jujur sejak hari pertama, termasuk risiko dan peluangnya.",
+    "Setiap perkara ditangani tim kecil yang saling melengkapi, sehingga klien selalu tahu siapa yang bertanggung jawab dan ke mana perkaranya bergerak."
+  ],
+  values: [
+    { title: "Jujur sejak awal", text: "Kami menyampaikan penilaian apa adanya, bukan janji kemenangan." },
+    { title: "Rahasia terjaga", text: "Seluruh informasi klien dilindungi sesuai Kode Etik Advokat Indonesia." },
+    { title: "Mudah dihubungi", text: "Klien mendapat kabar perkembangan perkara secara berkala dan jelas." }
+  ],
+  practice: [
+    { title: "Hukum perusahaan", text: "Pendirian badan usaha, kontrak komersial, merger dan akuisisi, serta tata kelola perusahaan." },
+    { title: "Litigasi perdata", text: "Wanprestasi, perbuatan melawan hukum, dan sengketa bisnis di pengadilan maupun arbitrase." },
+    { title: "Hukum pidana", text: "Pendampingan sejak penyelidikan, persidangan, hingga upaya hukum, termasuk pidana ekonomi." },
+    { title: "Ketenagakerjaan", text: "Pemutusan hubungan kerja, pesangon, dan penyelesaian perselisihan hubungan industrial." },
+    { title: "Hukum keluarga dan waris", text: "Perceraian, hak asuh anak, harta bersama, perjanjian pranikah, dan sengketa waris." },
+    { title: "Pertanahan dan properti", text: "Sengketa tanah, jual beli properti, uji tuntas sertifikat, dan perjanjian sewa." },
+    { title: "Kekayaan intelektual", text: "Pendaftaran merek, hak cipta, paten, serta penindakan atas pelanggaran." },
+    { title: "Kepailitan dan PKPU", text: "Pendampingan debitur maupun kreditur dalam kepailitan dan restrukturisasi utang." }
+  ],
+  team: [
+    { prefix: "Dr.", name: "Adrian Prasetya", degrees: "S.H., M.H.", role: "Founding Partner", photo: "foto/adrian.jpg",
+      education: ["S3 Ilmu Hukum, Universitas Padjadjaran", "S2 Hukum Bisnis, Universitas Gadjah Mada", "S1 Hukum, Universitas Indonesia"] },
+    { prefix: "", name: "Maya Kusumawardani", degrees: "S.H., M.Kn.", role: "Managing Partner", photo: "foto/maya.jpg",
+      education: ["S2 Kenotariatan, Universitas Indonesia", "S1 Hukum, Universitas Airlangga"] },
+    { prefix: "", name: "Rizky Ananda Putra", degrees: "S.H., LL.M.", role: "Senior Associate", photo: "foto/rizky.jpg",
+      education: ["LL.M. Corporate Law, University of Melbourne", "S1 Hukum, Universitas Diponegoro"] },
+    { prefix: "", name: "Nadia Safitri", degrees: "S.H., M.H.", role: "Associate", photo: "foto/nadia.jpg",
+      education: ["S2 Hukum Litigasi, Universitas Gadjah Mada", "S1 Hukum, Universitas Brawijaya"] }
+  ],
+  contact: {
+    address: "Gedung Menara Hukum Lt. 12, Jl. Jenderal Sudirman Kav. 45, Setiabudi, Jakarta Selatan 12930",
+    phone: "+62 21 5555 0123",
+    whatsapp: "6281200000000",   /* format internasional tanpa + dan spasi */
+    email: "info@prasetyarekan.co.id",
+    hours: "Senin sampai Jumat, 09.00 sampai 17.00 WIB",
+    instagram: "",               /* contoh: https://instagram.com/akunanda */
+    linkedin: ""
+  },
+  topics: ["Hukum perusahaan", "Litigasi perdata", "Hukum pidana", "Ketenagakerjaan", "Hukum keluarga dan waris", "Pertanahan dan properti", "Kekayaan intelektual", "Kepailitan dan PKPU", "Lainnya"]
+};
+</script>
+
+<header id="hd">
+  <div class="wrap bar">
+    <a href="#top" class="brand" id="brand"></a>
+    <button id="mt" aria-label="Buka menu">Menu</button>
+    <nav aria-label="Menu utama">
+      <a href="#tentang">Tentang</a><a href="#praktik">Bidang praktik</a><a href="#tim">Tim advokat</a><a href="#kontak">Kontak</a>
+      <a href="#kontak" class="btn">Konsultasi</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero"><div class="wrap hg">
+    <div class="rv"><h1 id="ht"></h1><p class="sub" id="hp"></p>
+      <div class="acts"><a class="btn" href="#kontak">Jadwalkan konsultasi</a><a class="btn o" href="#praktik">Lihat bidang praktik</a></div></div>
+    <aside class="card rv d"><h3>Hubungi kami</h3><p id="hs"></p><ul id="hl"></ul></aside>
+  </div></section>
+
+  <section class="stats"><div class="wrap sg" id="stats"></div></section>
+
+  <section class="sec" id="tentang"><div class="wrap">
+    <h2>Tentang kami</h2>
+    <div class="ag"><div id="about"></div><div class="vals" id="vals"></div></div>
+  </div></section>
+
+  <section class="sec pr" id="praktik"><div class="wrap">
+    <h2>Bidang praktik</h2><p class="lead">Delapan bidang yang kami tangani dengan tim khusus di tiap bidangnya.</p>
+    <div class="pg" id="pg"></div>
+  </div></section>
+
+  <section class="sec" id="tim"><div class="wrap">
+    <h2>Tim advokat</h2><p class="lead">Advokat berpengalaman dengan latar pendidikan hukum yang kuat dan saling melengkapi.</p>
+    <div class="tg" id="tg"></div>
+  </div></section>
+
+  <section class="sec ct" id="kontak"><div class="wrap">
+    <h2>Kontak dan kantor</h2><p class="lead" style="color:#b9c8c5">Ceritakan singkat masalah Anda. Pesan akan terbuka di WhatsApp dan dijawab pada jam kerja.</p>
+    <div class="cg">
+      <div><ul class="ci" id="ci"></ul>
+        <form id="f"><input name="n" placeholder="Nama Anda" required autocomplete="name">
+          <select name="b" aria-label="Bidang hukum" id="topic"></select>
+          <textarea name="m" rows="4" placeholder="Ringkasan masalah hukum Anda" required></textarea>
+          <button class="btn" type="submit">Kirim lewat WhatsApp</button></form>
+        <p class="fn">Informasi di situs ini bersifat umum dan bukan nasihat hukum. Hubungan advokat dan klien baru terbentuk setelah ada kesepakatan tertulis.</p></div>
+      <iframe class="map" id="map" title="Lokasi kantor" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div></section>
+</main>
+
+<footer><div class="wrap"><p id="fl"></p><p id="fy"></p></div></footer>
+
+<script>
+(()=>{
+const C=CONFIG,$=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const ini=n=>n.split(/\s+/).filter(Boolean).slice(0,2).map(w=>w[0]).join('').toUpperCase();
+const tel=C.contact.phone.replace(/[^\d+]/g,'');
+const r=document.documentElement.style;r.setProperty('--ink',C.colors.ink);r.setProperty('--brass',C.colors.brass);
+
+document.title=`${C.firm.name} | ${C.firm.tagline}`;
+document.querySelector('meta[name=description]').content=C.firm.description;
+
+$('#brand').innerHTML=`<span class="mono">${esc(C.firm.initials)}</span>${esc(C.firm.name)}`;
+$('#ht').innerHTML=C.firm.heroTitle;
+$('#hp').textContent=C.firm.heroText;
+$('#hs').textContent=`${C.firm.tagline} sejak ${C.firm.since}`;
+$('#hl').innerHTML=`
+<li><div><b>Telepon</b><span><a href="tel:${esc(tel)}">${esc(C.contact.phone)}</a></span></div></li>
+<li><div><b>Jam kerja</b><span>${esc(C.contact.hours)}</span></div></li>
+<li><div><b>Kantor</b><span>${esc(C.contact.address)}</span></div></li>`;
+
+$('#stats').innerHTML=C.stats.map(s=>`<div class="st"><b>${esc(s.value)}</b><span>${esc(s.label)}</span></div>`).join('');
+$('#about').innerHTML=C.about.map(p=>`<p>${esc(p)}</p>`).join('');
+$('#vals').innerHTML=C.values.map(v=>`<div class="val"><h3>${esc(v.title)}</h3><p>${esc(v.text)}</p></div>`).join('');
+$('#pg').innerHTML=C.practice.map(p=>`<div class="pi"><h3>${esc(p.title)}</h3><p>${esc(p.text)}</p></div>`).join('');
+
+$('#tg').innerHTML=C.team.map(t=>{
+  const full=[t.prefix,t.name].filter(Boolean).join(' ')+(t.degrees?`, ${t.degrees}`:'');
+  return `<article class="tm"><div class="ph"><span>${esc(ini(t.name))}</span>${t.photo?`<img src="${esc(t.photo)}" alt="Foto ${esc(full)}" loading="lazy" onerror="this.remove()">`:''}</div>
+  <h3>${esc(full)}</h3><div class="rl">${esc(t.role)}</div><ul>${(t.education||[]).map(e=>`<li>${esc(e)}</li>`).join('')}</ul></article>`}).join('');
+
+const c=C.contact,soc=[c.instagram&&`<a href="${esc(c.instagram)}" target="_blank" rel="noopener">Instagram</a>`,c.linkedin&&`<a href="${esc(c.linkedin)}" target="_blank" rel="noopener">LinkedIn</a>`].filter(Boolean).join(' &nbsp; ');
+$('#ci').innerHTML=`
+<li><small>Alamat kantor</small>${esc(c.address)}</li>
+<li><small>Telepon</small><a href="tel:${esc(tel)}">${esc(c.phone)}</a></li>
+<li><small>WhatsApp</small><a href="https://wa.me/${esc(c.whatsapp)}" target="_blank" rel="noopener">+${esc(c.whatsapp)}</a></li>
+<li><small>Email</small><a href="mailto:${esc(c.email)}">${esc(c.email)}</a></li>
+<li><small>Jam kerja</small>${esc(c.hours)}${soc?`<br>${soc}`:''}</li>`;
+$('#topic').innerHTML=C.topics.map(t=>`<option>${esc(t)}</option>`).join('');
+$('#map').src=`https://maps.google.com/maps?q=${encodeURIComponent(c.address)}&output=embed`;
+
+$('#f').onsubmit=e=>{e.preventDefault();const d=new FormData(e.target);
+  const t=`Halo ${C.firm.name}, saya ${d.get('n')}. Bidang: ${d.get('b')}.\n${d.get('m')}`;
+  window.open(`https://wa.me/${c.whatsapp}?text=${encodeURIComponent(t)}`,'_blank','noopener')};
+
+$('#fl').textContent=`© ${new Date().getFullYear()} ${C.firm.name}. Seluruh hak dilindungi.`;
+$('#fy').textContent=`${C.firm.tagline} | ${c.address.split(',').slice(-1)[0].trim()}`;
+
+$('#mt').onclick=()=>$('#hd').classList.toggle('open');
+document.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',()=>$('#hd').classList.remove('open')));
+
+const ld=document.createElement('script');ld.type='application/ld+json';
+ld.textContent=JSON.stringify({"@context":"https://schema.org","@type":"LegalService",name:C.firm.name,description:C.firm.description,telephone:c.phone,email:c.email,address:{"@type":"PostalAddress",streetAddress:c.address},employee:C.team.map(t=>({"@type":"Person",name:t.name,jobTitle:t.role}))});
+document.head.appendChild(ld);
+})();
+</script>
+</body>
+</html>
