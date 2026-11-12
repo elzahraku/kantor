@@ -215,6 +215,8 @@ const CONFIG = {
     phone: "0813 1691 1500",
     whatsapp: "6281316911500",   /* format internasional tanpa + dan spasi */
     email: "mwdrlawoffice@gmail.com",
+    maps: "https://maps.app.goo.gl/XCUWbWxFY4TGjJH5A",   /* tautan Google Maps kantor */
+    mapQuery: "DESTA & PARTNERS LAW FIRM, Jl. Trans Kalimantan, Handil Bakti, Alalak, Barito Kuala, Kalimantan Selatan 70582",
     hours: "Senin sampai Jumat, 09.00 sampai 17.00 WIB",
     instagram: "",               /* contoh: https://instagram.com/akunanda */
     linkedin: ""
@@ -310,13 +312,13 @@ $('#tg').innerHTML=C.team.map(t=>{
 
 const c=C.contact,soc=[c.instagram&&`<a href="${esc(c.instagram)}" target="_blank" rel="noopener">Instagram</a>`,c.linkedin&&`<a href="${esc(c.linkedin)}" target="_blank" rel="noopener">LinkedIn</a>`].filter(Boolean).join(' &nbsp; ');
 $('#ci').innerHTML=`
-<li><small>Alamat kantor</small>${esc(c.address)}</li>
+<li><small>Alamat kantor</small>${esc(c.address)}${c.maps?`<br><a href="${esc(c.maps)}" target="_blank" rel="noopener" style="color:var(--brassl)">Buka di Google Maps</a>`:''}</li>
 <li><small>Telepon</small><a href="tel:${esc(tel)}">${esc(c.phone)}</a></li>
 <li><small>WhatsApp</small><a href="https://wa.me/${esc(c.whatsapp)}" target="_blank" rel="noopener">+${esc(c.whatsapp)}</a></li>
 <li><small>Email</small><a href="mailto:${esc(c.email)}">${esc(c.email)}</a></li>
 <li><small>Jam kerja</small>${esc(c.hours)}${soc?`<br>${soc}`:''}</li>`;
 $('#topic').innerHTML=C.topics.map(t=>`<option>${esc(t)}</option>`).join('');
-$('#map').src=`https://maps.google.com/maps?q=${encodeURIComponent(c.address)}&output=embed`;
+$('#map').src=`https://maps.google.com/maps?q=${encodeURIComponent(c.mapQuery||c.address)}&output=embed`;
 
 const adv=C.team.map(t=>[t.prefix,t.name].filter(Boolean).join(' ')+(t.degrees?`, ${t.degrees}`:''));
 const ad=c.address.split(','),st=ad[0].trim(),rest=ad.slice(1).join(',').trim();
